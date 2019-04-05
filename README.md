@@ -152,6 +152,11 @@ There are four values:
     For CORS, you will want to configure your `cors.allow-methods` to be the HTTP verbs set in your proto (i.e. `GET`, `PUT`, etc.), as well as `OPTIONS`, so that your service can handle the [preflight request](https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request).
 
     If you are not using CORS, you can leave these configuration values at their default, and your gateway will not accept CORS requests.
+###  Other Response Headers
+
+You can configure additional headers to be sent in the HTTP response.  
+Set environment variable with prefix `<SERVICE>_RESPONSE-HEADERS_` (e.g `SOMESERVICE_RESPONSE-HEADERS_SOME-HEADER-KEY`).  
+You can also set headers in the your configuration file (e.g `response-headers.some-header-key`)
 
 ### Environment Variables
 
@@ -201,10 +206,10 @@ $ make build
 This will build all of the known containers.
 
 ```sh
-$ make test
+$ CONTAINER=namely/protoc-all:VVV make test
 ```
 
-This will run tests that containers can build for each language.
+Where VVV is your version. This will run tests that containers can build for each language.
 
 ```sh
 $ make push
